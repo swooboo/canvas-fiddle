@@ -29,9 +29,9 @@ function draw_points(init=0, last=0, drawer_g=function*(){return [0,0];}, canvas
 	for (let point of gener) {
 		[x,y] = point;
 		[x,y] = [x%canvas.width,y%canvas.height]	// Don't draw outside of canvas
-		d[0] = d[1] = d[2] = 0; // Color
-		d[3] = canvas.mirror[x][y]*32; // Opacity pixel
-
+		d[0] = canvas.mirror[x][y]*16; // Some reds to indicate a lot of points
+		d[1] = d[2] = 0+canvas.mirror[x][y]*2; // Color
+		d[3] = 255; // Opacity pixel
 		context.putImageData(image_data, x, y); // Draw the pixel
 		canvas.mirror[x][y] = canvas.mirror[x][y] + 1;	// Counter for pixelssd
 	}
