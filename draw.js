@@ -7,6 +7,17 @@ window.onload = function(){
 		mirror[i] = Array(canvas.height).fill(0)
 	}
 	canvas.mirror = mirror;
+
+	// EXAMPLE
+	function* g(init,last){
+		for (var i = init; i <last; i++) {
+			yield([i,Math.floor(Math.sin(i/47)*97)]);
+		}
+	}
+	draw_points(0,10000,g, canvas, context);
+	draw_points(10000,20000,g, canvas, context);
+	draw_points(20000,30000,g, canvas, context);
+	// END EXAMPLE
 }
 
 // Drawing all the points using an existing generator
